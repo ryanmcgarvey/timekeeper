@@ -1,0 +1,4 @@
+%h1 Add a new client
+= bootstrap_form_for(@client, role: 'add_client_form') do |f|
+  = f.text_field :name
+  = f.submit "Add Client"

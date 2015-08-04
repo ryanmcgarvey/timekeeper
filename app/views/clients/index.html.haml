@@ -1,0 +1,7 @@
+%h1 Clients
+%h2= link_to "Add Client", new_client_path, role: "add_client"
+%table.table{role: 'client_list'}
+  - Client.all.each do |client|
+    %tr
+      %td= link_to client.name, client
+
