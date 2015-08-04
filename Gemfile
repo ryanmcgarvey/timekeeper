@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap_form'
+gem 'devise'
 
 
 # Use ActiveModel has_secure_password

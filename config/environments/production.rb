@@ -1,4 +1,6 @@
 Rails.application.configure do
+  WEB_HOST = ENV['WEB_HOST']
+  WEB_PORT = ENV['WEB_PORT'] || 80
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -76,4 +78,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: WEB_HOST, port: WEB_PORT}
 end

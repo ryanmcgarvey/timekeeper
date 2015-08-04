@@ -8,8 +8,11 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 
+DatabaseCleaner.strategy = :transaction
 RSpec.configure do |config|
-  config.before(:each) do
-    DatabaseCleaner.clean_with(:truncation)
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
   end
 end
