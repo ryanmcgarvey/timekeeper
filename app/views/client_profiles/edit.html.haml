@@ -1,6 +1,13 @@
 %h1 Edit Client Profile
-= bootstrap_form_for(@client_profile, role: 'client_profile_form') do |f|
+= bootstrap_form_for(@client_profile) do |f|
   = f.text_field :name
   = f.hidden_field :client_id
   = f.hidden_field :user_id
+  %div{role: 'rates_group'}
+    = f.fields_for :rates, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |rf|
+      =render("new_rate", rf: rf)
+  - rates_fields = f.fields_for @client_profile.rates.build , layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-10" do |rf|
+    =render("new_rate", rf: rf)
+  %button.button.button-default{ data: { presents: 'add_html', html: rates_fields, target: "[role='rates_group']" } }
+    Add New Rate
   = f.submit "Update Client Profile"
