@@ -6,6 +6,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{type: 'button', data: { toggle: 'collapse', target: '#' }}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Clients", clients_path, class: 'navbar-brand'
+
     .container
       = yield
-
