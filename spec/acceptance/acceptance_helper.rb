@@ -8,6 +8,7 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 
+
 DatabaseCleaner.strategy = :transaction
 RSpec.configure do |config|
   config.around(:each) do |example|
@@ -15,4 +16,12 @@ RSpec.configure do |config|
       example.run
     end
   end
+  config.include Warden::Test::Helpers
+  config.before :suite do
+    Warden.test_mode!
+  end
+  config.after :each do
+    Warden.test_reset!
+  end
+   config.use_transactional_fixtures = false
 end

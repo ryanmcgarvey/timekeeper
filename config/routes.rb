@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'clients#index'
   resources :clients do
     resources :timelogs
+    resources :client_profiles
   end
 
   # Example of regular route:

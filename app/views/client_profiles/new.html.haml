@@ -1,0 +1,6 @@
+%h1 Add a new Client Profile
+= bootstrap_form_for(@client_profile, role: 'add_client_profile_form', url: client_client_profiles_path(@client)) do |f|
+  = f.text_field :name
+  = f.hidden_field :client_id
+  = f.hidden_field :user_id
+  = f.submit "Add Client Profile"

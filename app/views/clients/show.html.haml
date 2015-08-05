@@ -1,6 +1,6 @@
 = render "timelogs/add_hour", client: @client
 %div{role: 'interval_summary'}
-  -@client.timelogs.by_week.each do |interval|
+  - @client.timelogs.by_week.each do |interval|
     .row{role: 'interval'}
       .col-md-3{role: 'title'}
         = interval.title

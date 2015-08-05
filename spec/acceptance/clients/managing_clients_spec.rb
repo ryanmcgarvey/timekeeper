@@ -4,11 +4,16 @@ require 'acceptance/clients/client_helper'
 RSpec.feature 'Creating clients', %q{
   In order to keep track of whom to bill for which hours
   As a consultant
-  I want to manage a list of active clients
+  I want to manage a list of clients
 } do
 
+  let(:client_helper) { ClientHelper.new }
+
+  before do
+    login
+  end
+
   scenario 'creating a client' do
-    client_helper = ClientHelper.new
     client_helper.go_home
     client_list = client_helper.client_list
 

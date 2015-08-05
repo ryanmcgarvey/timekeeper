@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @client_profiles = @client.client_profiles.for_user(current_user)
   end
 
   def edit

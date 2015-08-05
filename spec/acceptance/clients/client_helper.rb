@@ -22,4 +22,12 @@ class ClientHelper
   def client_list
     TableHelper.new "table[role='client_list']"
   end
+
+  def add_profile(client, profile_name)
+    within client_list.row_with_text(client) do
+      click_on "Add Profile"
+    end
+    fill_in "Name", with: profile_name
+    click_on 'Add Client Profile'
+  end
 end

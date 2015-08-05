@@ -5,5 +5,4 @@ class TimelogsController < ApplicationController
     redirect_to client_path(timelog.client)
   end
 
-
 end

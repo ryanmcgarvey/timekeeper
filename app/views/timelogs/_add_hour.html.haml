@@ -1,6 +1,6 @@
 %h1= @client.name
-= bootstrap_form_for(@client.timelogs.build(date: DateTime.now), url: client_timelogs_path(@client), layout: :horizontal) do |f|
-  = f.hidden_field :client_id
+= bootstrap_form_for(Timelog.new, url: client_timelogs_path(@client), layout: :horizontal) do |f|
+  = f.select :client_profile_id, @client_profiles.map {|cp| [cp.name, cp.id] }
   = f.date_field :date
   = f.number_field :hours, step: "any"
   = f.text_field :description
