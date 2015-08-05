@@ -10,6 +10,14 @@ class Timelog::Interval
     timelogs.map(&:hours).reduce(:+)
   end
 
+  def per_profile
+    [].tap do |hours|
+      timelogs.group_by(&:client_profile).each do |profile, logs|
+        hours << "#{profile.name} #{logs.map(&:hours).reduce(:+)}"
+      end
+    end.join(", ")
+  end
+
   def self.bucket_timelogs(timelogs)
     {}.tap do |logs|
       timelogs.each do |log|

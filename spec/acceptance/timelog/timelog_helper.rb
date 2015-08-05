@@ -19,6 +19,10 @@ class TimelogHelper
     intervals[1].total
   end
 
+  def hours_for_current_interval(profile: 'Development')
+    intervals.first.for_profile(profile)
+  end
+
   def intervals
     IntervalSummary.new("[role='interval_summary']").intervals
   end
@@ -33,6 +37,11 @@ class TimelogHelper
     class Interval < Struct.new(:element)
       def total
         element.find("[role='total']").text.to_f
+      end
+
+      def for_profile(profile)
+        text = element.find("[role='per_profile']").text
+        text.split(", ").map {|p| p.split(" ") }.select {|pair| pair[0] == profile }.flatten[1].to_f
       end
     end
   end

@@ -3,4 +3,6 @@ class Timelog < ActiveRecord::Base
   has_one :client, through: :client_profile
 
   scope :by_week, -> { Timelog::Week.bucket(all) }
+
+  validates_presence_of :date
 end

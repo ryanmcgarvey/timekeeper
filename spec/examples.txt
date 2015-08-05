@@ -1,6 +1,7 @@
 example_id                                                      | status | run_time        |
 --------------------------------------------------------------- | ------ | --------------- |
-./spec/acceptance/clients/managing_client_profiles_spec.rb[1:1] | passed | 1.62 seconds    |
-./spec/acceptance/clients/managing_clients_spec.rb[1:1]         | passed | 0.1369 seconds  |
-./spec/acceptance/timelog/add_hours_spec.rb[1:1]                | passed | 0.52877 seconds |
-./spec/models/timelog/week_spec.rb[1:1:1:1:1]                   | passed | 0.02292 seconds |
+./spec/acceptance/clients/managing_client_profiles_spec.rb[1:1] | passed | 1.37 seconds    |
+./spec/acceptance/clients/managing_clients_spec.rb[1:1]         | passed | 0.1714 seconds  |
+./spec/acceptance/timelog/add_hours_spec.rb[1:1]                | passed | 2.08 seconds    |
+./spec/acceptance/timelog/add_hours_spec.rb[1:2]                | passed | 4.61 seconds    |
+./spec/models/timelog/week_spec.rb[1:1:1:1:1]                   | passed | 0.01848 seconds |
