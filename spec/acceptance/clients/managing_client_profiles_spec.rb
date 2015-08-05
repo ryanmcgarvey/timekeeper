@@ -24,5 +24,11 @@ RSpec.feature 'Creating client profiles', %q{
     expect(client_list.row_with_text("Client 1")).to have_content("Development")
   end
 
+  scenario 'creating a client profile' do
+    client_helper.add_profile("Client 1", "Development")
+    client_helper.edit_profile("Client 1", "Development", "Design")
+    expect(client_list.row_with_text("Client 1")).to have_content("Design")
+  end
+
 end
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'clients#index'
+  resources :client_profiles
   resources :clients do
     resources :timelogs
     resources :client_profiles

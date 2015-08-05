@@ -4,5 +4,5 @@
   - Client.all.each do |client|
     %tr
       %td= link_to client.name, client
-      %td= client.client_profiles.for_user(current_user).map(&:name).join(", ")
+      %td= client.client_profiles.for_user(current_user).map {|cp| link_to cp.name, edit_client_client_profile_path(client, cp) }.join(", ").html_safe
       %td= link_to "Add Profile", new_client_client_profile_path(client)

@@ -30,4 +30,12 @@ class ClientHelper
     fill_in "Name", with: profile_name
     click_on 'Add Client Profile'
   end
+
+  def edit_profile(client, old_profile_name, new_profile_name)
+    within client_list.row_with_text("Client 1") do
+      click_on(old_profile_name)
+    end
+    fill_in "Name", with: new_profile_name
+    click_on 'Update Client Profile'
+  end
 end
