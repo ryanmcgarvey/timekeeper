@@ -1,11 +1,8 @@
 class Timelog::Week < Timelog::Interval
 
   def self.bucket(timelogs)
-    logs = self.bucket_timelogs(timelogs) do |log|
+    super do |log|
       log.date.beginning_of_week
-    end
-    logs.keys.sort.reverse.map do |interval_start|
-      self.new(logs[interval_start],interval_start)
     end
   end
 
@@ -13,4 +10,9 @@ class Timelog::Week < Timelog::Interval
     "Week Starting #{start_of_interval.strftime("%A, %B %e")}"
   end
 
+  def sub_intervals
+    ::Timelog::Day.bucket(timelogs)
+  end
+
 end
+

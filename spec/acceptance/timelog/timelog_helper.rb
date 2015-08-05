@@ -43,6 +43,12 @@ class TimelogHelper
         text = element.find("[role='per_profile']").text
         text.split(", ").map {|p| p.split(" ") }.select {|pair| pair[0] == profile }.flatten[1].to_f
       end
+
+      def sub_interval
+        within selector do
+          all("[role='sub_interval']").map {|w| Interval.new(w) }
+        end
+      end
     end
   end
 

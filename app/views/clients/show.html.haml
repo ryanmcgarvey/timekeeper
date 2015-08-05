@@ -2,9 +2,17 @@
 %div{role: 'interval_summary'}
   - @client.timelogs.by_week.each do |interval|
     .row{role: 'interval'}
-      .col-md-3{role: 'title'}
+      .col-md-3.text-right{role: 'title'}
         = interval.title
       .col-md-3{role: 'total'}
         = interval.total_hours
       .col-md-3{role: 'per_profile'}
         = interval.per_profile
+    - interval.sub_intervals.each do |sub_interval|
+      .row{role: 'sub_interval'}
+        .col-md-3.text-right{role: 'title'}
+          = sub_interval.title
+        .col-md-3{role: 'total'}
+          = sub_interval.total_hours
+        .col-md-3{role: 'total'}
+          = sub_interval.per_profile
