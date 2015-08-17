@@ -5,6 +5,10 @@ class Client < ActiveRecord::Base
     end
   end
 
+  def log_summary
+    Timelog::Summary.new(timelogs)
+  end
+
   has_many :timelogs, through: :client_profiles
 
 end
