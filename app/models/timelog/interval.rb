@@ -19,19 +19,20 @@ class Timelog::Interval
   end
 
   attr_reader :timelogs, :start_of_interval
-  def initialize(timelogs, start_of_interval)
+
+  def initialize(timelogs, start_of_interval = nil)
     @timelogs = timelogs.sort_by(&:date)
     @start_of_interval = start_of_interval
   end
 
   def total_hours
-    timelogs.map(&:hours).reduce(:+)
+    timelogs.map(&:total_hours).reduce(:+)
   end
 
   def per_profile
     [].tap do |hours|
       timelogs.group_by(&:client_profile).each do |profile, logs|
-        hours << "#{profile.name} #{logs.map(&:hours).reduce(:+)}"
+        hours << "#{profile.name} #{logs.map(&:total_hours).reduce(:+)}"
       end
     end.join(", ")
   end

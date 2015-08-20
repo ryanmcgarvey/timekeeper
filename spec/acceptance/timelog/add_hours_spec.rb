@@ -53,5 +53,18 @@ RSpec.feature 'Add hours worked for client to the client timelog', %q{
     expect(timelog.hours_for_current_interval(profile: 'Design')).to eq 4
   end
 
+  scenario 'adding hours by begin and end times' do
+    client_helper.visit_client "Client 1"
+
+    timelog.add_hours begin_time: 7, end_time: 12, description: "To support client", profile_name: "Development"
+    timelog.add_hours begin_time: 7, end_time: 11, description: "To support client", date: 1.day.ago, profile_name: "Development"
+    timelog.add_hours begin_time: 8, end_time: 11, description: "To support client", date: 2.days.ago, profile_name: "Design"
+    timelog.add_hours begin_time: 11, end_time: 12, description: "To support client", date: 3.days.ago, profile_name: "Design"
+    expect(timelog.total_hours_for_current_interval).to eq 13
+    expect(timelog.hours_for_current_interval(profile: 'Development')).to eq 9
+    expect(timelog.hours_for_current_interval(profile: 'Design')).to eq 4
+
+  end
+
 
 end

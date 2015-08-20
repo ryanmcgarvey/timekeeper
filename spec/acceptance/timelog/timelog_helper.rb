@@ -1,10 +1,14 @@
 class TimelogHelper
   include CapybaraHelpers
 
-  def add_hours(hours: 8.0, description: "", date: Time.now, profile_name: 'Development')
+  def add_hours(hours: nil, end_time: nil, begin_time: nil, description: "", date: Time.now, profile_name: 'Development')
     within 'form' do
       select profile_name, from: 'Client profile'
-      fill_in 'Hours', with: hours
+
+      fill_in 'Hours', with: hours if hours
+      fill_in 'Begin time', with: begin_time if begin_time
+      fill_in 'End time', with: end_time if end_time
+
       fill_in 'Description', with: description if description
       fill_in 'Date', with: date.strftime("%Y/%m/%d") if date
       click_on 'Add Hours'
