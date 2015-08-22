@@ -2,27 +2,21 @@
 - summary = @client.log_summary
 %div{role: 'interval_summary'}
 
-  .row
-    .col-md-3.text-right{role: 'title'}
-      =summary.title
-    .col-md-3{role: 'total'}
+  .row.interval.interval--summary
+    .col-sm-offset-3.col-sm-1{role: 'total'}
       =summary.total_hours
-    .col-md-3{role: 'per_profile'}
-      = summary.per_profile
 
   - summary.sub_intervals.each do |interval|
-    .row{role: 'interval'}
-      .col-md-3.text-right{role: 'title'}
-        = interval.title
-      .col-md-3{role: 'total'}
-        = interval.total_hours
-      .col-md-3{role: 'per_profile'}
-        = interval.per_profile
-    - interval.sub_intervals.each do |sub_interval|
-      .row{role: 'sub_interval'}
-        .col-md-3.text-right{role: 'title'}
-          = sub_interval.title
-        .col-md-3{role: 'total'}
+    .row.interval.interval--primary{role: 'interval'}
+      .col-sm-offset-3.col-sm-1{role: 'total'}
+        %strong= interval.total_hours
+    - interval.sub_intervals.each_with_index do |sub_interval, index|
+      .row.interval.interval--secondary{role: 'sub_interval'}
+        .col-sm-3.text-right{role: 'title'}
+          - if index == interval.sub_intervals.size - 1
+            %span= sub_interval.pre_title
+            = sub_interval.title
+          - else
+            = sub_interval.title
+        .col-sm-1{role: 'total'}
           = sub_interval.total_hours
-        .col-md-3{role: 'total'}
-          = sub_interval.per_profile

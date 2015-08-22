@@ -7,7 +7,7 @@ class Timelog::Week < Timelog::Interval
   end
 
   def title
-    "Week Starting #{start_of_interval.strftime("%A, %B %e")}"
+    "#{start_of_interval.strftime("%B %e")}"
   end
 
   def sub_intervals

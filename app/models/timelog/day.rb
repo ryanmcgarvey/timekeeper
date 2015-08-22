@@ -8,4 +8,8 @@ class Timelog::Day < Timelog::Interval
   def title
     timelogs.first.date.strftime("%A")
   end
+
+  def pre_title
+    "#{start_of_interval.strftime("%B %e")}"
+  end
 end
