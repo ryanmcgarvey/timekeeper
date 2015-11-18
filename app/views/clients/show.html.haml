@@ -1,2 +1,3 @@
+%h1= @client.name
 = render "timelogs/add_hour", client: @client
 = render 'clients/summary', summary: @client.log_summary

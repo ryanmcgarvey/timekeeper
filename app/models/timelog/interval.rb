@@ -25,10 +25,6 @@ class Timelog::Interval
     @start_of_interval = start_of_interval
   end
 
-  def total_hours
-    timelogs.map(&:total_hours).reduce(:+)
-  end
-
   def per_profile
     [].tap do |hours|
       timelogs.group_by(&:client_profile).each do |profile, logs|
@@ -37,5 +33,37 @@ class Timelog::Interval
     end.join(", ")
   end
 
+  def total_hours
+    @_total_hours ||= calculate_total_hours
+  end
+
+  def total_earned
+    @_total_earned ||= calculate_total_earned
+  end
+
+  def average_rate
+    @_average_rate ||= calculate_average_rate
+  end
+
+  private
+
+  def calculate_total_hours
+    if has_sub_intervals?
+      sub_intervals.reduce(0) {|m, s| m + s.total_hours }
+    else
+      timelogs.map(&:total_hours).reduce(:+)
+    end
+  end
+
+  def calculate_total_earned
+    timelogs.reduce(0) do |total, log|
+      rate = log.client_profile.rates.first || Rate.new(ammount: 250)
+      total + log.total_hours * rate.ammount
+    end
+  end
+
+  def calculate_average_rate
+    total_earned.to_f / total_hours
+  end
 
 end

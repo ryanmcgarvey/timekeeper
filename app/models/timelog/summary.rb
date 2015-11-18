@@ -14,5 +14,9 @@ class Timelog::Summary < Timelog::Interval
     ::Timelog::Week.bucket(timelogs)
   end
 
+  def has_sub_intervals?
+    true
+  end
+
 end
 

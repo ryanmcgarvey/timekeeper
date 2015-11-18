@@ -1,3 +1,6 @@
+
+= render 'timelogs/add_quick_hour'
+
 %h1 Clients
 %h2= link_to "Add Client", new_client_path, role: "add_client"
 %table.table{role: 'client_list'}
@@ -6,4 +9,4 @@
       %td= link_to client.name, client
       %td= client.client_profiles.for_user(current_user).map {|cp| link_to cp.name, edit_client_client_profile_path(client, cp) }.join(", ").html_safe
       %td= link_to "Add Profile", new_client_client_profile_path(client)
-= render 'clients/summary', summary: Timelog::Summary.new(current_user.clients.map(&:timelogs).flatten)
+= render 'clients/summary', summary: Timelog::Summary.new(current_user.clients.map(&:timelogs).flatten.uniq)

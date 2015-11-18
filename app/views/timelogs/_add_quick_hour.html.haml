@@ -1,0 +1,8 @@
+- client = current_user.most_recent_client_profile.client
+%h1= "Add hours for #{client.name}"
+= bootstrap_form_for(Timelog.new, url: client_timelogs_path(client), layout: :horizontal) do |f|
+  = f.select :client_profile_id, client.client_profiles.for_user(current_user).map {|cp| [cp.name, cp.id] }, selected: current_user.most_recent_client_profile.id
+  = f.date_field :date
+  = f.time_field :begin_time
+  = f.time_field :end_time
+  = f.submit "Add Hours"

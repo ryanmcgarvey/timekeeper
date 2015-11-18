@@ -6,7 +6,6 @@ class Timelog < ActiveRecord::Base
 
   validates_presence_of :date
 
-
   def total_hours
     return hours if hours
     return (end_time - begin_time) / 1.hour if end_time && begin_time

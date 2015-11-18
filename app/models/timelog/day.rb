@@ -12,4 +12,8 @@ class Timelog::Day < Timelog::Interval
   def pre_title
     "#{start_of_interval.strftime("%B %e")}"
   end
+
+  def has_sub_intervals?
+    false
+  end
 end
