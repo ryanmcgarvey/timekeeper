@@ -9,6 +9,10 @@ class Client < ActiveRecord::Base
     Timelog::Summary.new(timelogs)
   end
 
+  def report
+    Reports::BiMonthly.new(timelogs)
+  end
+
   has_many :timelogs, through: :client_profiles
 
 end
