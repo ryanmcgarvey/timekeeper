@@ -13,6 +13,10 @@ class Timelog::Day < Timelog::Interval
     "#{start_of_interval.strftime("%B %e")}"
   end
 
+  def has_pre_title
+    true
+  end
+
   def has_sub_intervals?
     false
   end

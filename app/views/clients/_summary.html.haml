@@ -9,21 +9,13 @@
 
   - summary.sub_intervals.each do |interval|
     .row.interval.interval--primary{role: 'interval'}
-      .col-sm-offset-3.col-sm-1{role: 'total'}
+      .col-sm-3{role: 'title'}
+        %strong= interval.title
+      .col-sm-1{role: 'total'}
         %strong= interval.total_hours
       .col-sm-1{role: 'earned'}
         %strong= interval.total_earned
       .col-sm-1{role: 'rate'}
         %strong= interval.average_rate
-    - interval.sub_intervals.each_with_index do |sub_interval, index|
-      .row.interval.interval--secondary{role: 'sub_interval'}
-        .col-sm-3.text-right{role: 'title'}
-          - if index == interval.sub_intervals.size - 1
-            %span= sub_interval.pre_title
-          = sub_interval.title
-        .col-sm-1{role: 'total'}
-          = sub_interval.total_hours
-        .col-sm-1{role: 'earned'}
-          = sub_interval.total_earned
-        .col-sm-1{role: 'rate'}
-          = sub_interval.average_rate
+    = render "sub_interval", interval: interval
+    %hr

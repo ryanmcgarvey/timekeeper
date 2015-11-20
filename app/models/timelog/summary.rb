@@ -11,7 +11,7 @@ class Timelog::Summary < Timelog::Interval
   end
 
   def sub_intervals
-    ::Timelog::BiWeekly.bucket(timelogs)
+    ::Timelog::BiMonthly.bucket(timelogs)
   end
 
   def has_sub_intervals?

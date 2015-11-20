@@ -25,6 +25,11 @@ class Timelog::Interval
     @start_of_interval = start_of_interval
   end
 
+  def has_pre_title
+    false
+  end
+
+
   def per_profile
     [].tap do |hours|
       timelogs.group_by(&:client_profile).each do |profile, logs|
