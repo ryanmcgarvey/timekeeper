@@ -7,9 +7,9 @@
     .col-sm-1{role: 'total'}
       = sub_interval.total_hours
     .col-sm-1{role: 'earned'}
-      = sub_interval.total_earned
-    .col-sm-1{role: 'rate'}
-      = sub_interval.average_rate
+      = number_to_currency sub_interval.total_earned
   - if sub_interval.has_sub_intervals?
     = render "sub_interval", interval: sub_interval
     %br
+- if interval.split_with_rule
+  %hr

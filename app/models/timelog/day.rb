@@ -17,7 +17,4 @@ class Timelog::Day < Timelog::Interval
     true
   end
 
-  def has_sub_intervals?
-    false
-  end
 end

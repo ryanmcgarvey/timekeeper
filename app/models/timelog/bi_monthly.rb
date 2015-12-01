@@ -32,6 +32,10 @@ class Timelog::BiMonthly < Timelog::Interval
     true
   end
 
+  def split_with_rule
+    true
+  end
+
 end
 
 

@@ -18,5 +18,9 @@ class Timelog::Summary < Timelog::Interval
     true
   end
 
+  def split_with_rule
+    false
+  end
+
 end
 

@@ -29,6 +29,14 @@ class Timelog::Interval
     false
   end
 
+  def split_with_rule
+    false
+  end
+
+  def has_sub_intervals?
+    false
+  end
+
 
   def per_profile
     [].tap do |hours|
