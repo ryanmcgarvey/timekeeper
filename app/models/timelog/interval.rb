@@ -87,8 +87,9 @@ class Timelog::Interval
 
   def calculate_total_earned
     timelogs.reduce(0) do |total, log|
-      rate = log.client_profile.rates.first || Rate.new(ammount: 200)
-      total + log.total_hours * rate.ammount
+      rate = log.client_profile.rate || 200
+
+      total + (log.total_hours * rate)
     end
   end
 

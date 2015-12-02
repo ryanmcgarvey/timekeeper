@@ -7,7 +7,6 @@ class ClientProfilesController < ApplicationController
 
   def edit
     @client_profile = ClientProfile.find(params[:id])
-    @client_profile.rates.build
   end
 
   def update
