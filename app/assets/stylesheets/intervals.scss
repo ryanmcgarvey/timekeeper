@@ -1,14 +1,19 @@
+
+
 .interval {
-
+  font-size: 14px;
 }
 
-.interval--summary {
+.interval--prominent {
+  font-size: 18px;
+  padding-bottom: 7px;
 }
 
-.interval--primary {
-  margin-top: 15px;
-  margin-bottom: 5px;
+.interval--very-prominent {
+  font-size: 22px;
+  padding-bottom: 7px;
 }
 
-.interval--secondary {
+.interval__breakdown {
+  /* font-size: 14px; */
 }

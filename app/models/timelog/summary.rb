@@ -22,5 +22,13 @@ class Timelog::Summary < Timelog::Interval
     false
   end
 
+  def show_client_breakdown?
+    false
+  end
+
+  def interval_class
+    'interval--very-prominent'
+  end
+
 end
 

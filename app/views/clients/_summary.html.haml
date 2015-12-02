@@ -1,8 +1,8 @@
 %div{role: 'summary'}
-  .row.interval.interval--summary{role: 'interval_summary'}
+  .row.interval{role: 'interval_summary', class: summary.interval_class}
     .col-sm-offset-3.col-sm-1{role: 'total'}
       =summary.total_hours
     .col-sm-1{role: 'total'}
       =number_to_currency summary.total_earned
-
+  %hr
   = render "sub_interval", interval: summary

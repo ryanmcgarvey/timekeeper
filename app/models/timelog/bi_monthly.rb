@@ -36,6 +36,14 @@ class Timelog::BiMonthly < Timelog::Interval
     true
   end
 
+  def show_client_breakdown?
+    true
+  end
+
+  def interval_class
+    'interval--prominent'
+  end
+
 end
 
 

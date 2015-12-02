@@ -18,5 +18,9 @@ class Timelog::Week < Timelog::Interval
     true
   end
 
+  def show_client_breakdown?
+    false
+  end
+
 end
 

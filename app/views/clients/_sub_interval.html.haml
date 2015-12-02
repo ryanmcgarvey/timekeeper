@@ -1,5 +1,5 @@
 - interval.sub_intervals.each_with_index do |sub_interval, index|
-  .row.interval.interval--secondary{role: 'sub_interval'}
+  .row.interval.interval--secondary{role: 'interval', class: sub_interval.interval_class}
     .col-sm-3.text-right{role: 'title'}
       - if sub_interval.has_pre_title && index == interval.sub_intervals.size - 1
         %span= sub_interval.pre_title
@@ -8,6 +8,9 @@
       = sub_interval.total_hours
     .col-sm-1{role: 'earned'}
       = number_to_currency sub_interval.total_earned
+    - if sub_interval.show_client_breakdown?
+      .col-lg-7
+        = render "breakdown", interval: sub_interval
   - if sub_interval.has_sub_intervals?
     = render "sub_interval", interval: sub_interval
     %br

@@ -37,6 +37,23 @@ class Timelog::Interval
     false
   end
 
+  def show_client_breakdown?
+    false
+  end
+
+  def interval_class
+    ''
+  end
+
+  def client_breakdown
+    {}.tap do |breakdown|
+      timelogs.group_by(&:client).each do |client, logs|
+        breakdown[client.name] = logs.map(&:total_hours).reduce(:+)
+      end
+    end.each do |k,v|
+      yield k,v
+    end
+  end
 
   def per_profile
     [].tap do |hours|
