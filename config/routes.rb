@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :clients do
     resources :timelogs
     resources :client_profiles
+    resources :invoices
   end
 
 end
