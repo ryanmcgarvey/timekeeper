@@ -7,7 +7,7 @@ class InvoicesController < ApplicationController
     csv_data = CSV.generate do |csv|
       csv << ["Day", "Hours", "Total Earned"]
       days.each do |day|
-        csv << [day.start_of_interval, day.total_hours, day.total_earned]
+        csv << [day.start_of_interval.to_date.to_formatted_s(:iso8601), day.total_hours, day.total_earned]
       end
     end
     send_data csv_data
